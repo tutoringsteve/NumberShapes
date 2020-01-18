@@ -17,13 +17,17 @@ public class NumberShapesMainActivity extends AppCompatActivity {
     }
 
     public void clickFunction(View view) {
-        EditText editText = (EditText) findViewById(R.id.numberEditText);
-
-        Number number = new Number(editText.getText().toString());
-        Log.i("The number is", number.getNumber().toString());
-
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
+
+        EditText editText = findViewById(R.id.numberEditText);
+
+        String text = editText.getText().toString();
+
+        Number number = new Number(text);
+
+        Log.i("The number is", number.getNumber().toString());
+
 
         String isTriangular = (number.isTriangular() ? "is" : "is not");
         String isSquare = (number.isSquare() ? "is" : "is not");
@@ -34,10 +38,8 @@ public class NumberShapesMainActivity extends AppCompatActivity {
         Log.i("SquareTest", textSquare.toString());
         Log.i("TriangularTest", textTriangular.toString());
 
-        Toast toast = Toast.makeText(context, textSquare, duration);
-        toast.show();
-        toast = Toast.makeText(context, textTriangular, duration);
-        toast.show();
+        Toast.makeText(context, textSquare, duration).show();
+        Toast.makeText(context, textTriangular, duration).show();
     }
 
 }

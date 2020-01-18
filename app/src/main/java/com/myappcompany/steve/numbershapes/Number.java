@@ -10,20 +10,21 @@ import java.util.ArrayList;
 
 class Number {
 
-    Integer number;
+    private Integer number;
 
-    public Number() {
+    Number() {
         this.number = 1;
     }
-    public Number(String number){
+
+    Number(String number){
         this.number = Integer.parseInt(number);
     }
 
-    public Number(Integer number) {
+    Number(Integer number) {
         this.number = number;
     }
 
-    public Number(int number) {
+    Number(int number) {
         this((Integer) number);
     }
 
@@ -32,6 +33,9 @@ class Number {
      * @return Returns true iff the number is a square number
      */
     public boolean isSquare() {
+        if(number==0){
+            return true;
+        }
         ArrayList<Integer> squares = new ArrayList<>();
         for(int root = 1; root*root <= number; root++) {
             squares.add(root*root);
@@ -44,6 +48,9 @@ class Number {
      * @return Returns true iff the number is a triangular number
      */
     public boolean isTriangular() {
+        if(number==0){
+            return true;
+        }
         ArrayList<Integer> triangles = new ArrayList<>();
         Integer sum = 0;
         for(int i = 1; sum <= number; i++){
@@ -53,7 +60,11 @@ class Number {
         return triangles.contains(number);
     }
 
-    public Integer getNumber() {
+    Integer getNumber() {
         return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
     }
 }
