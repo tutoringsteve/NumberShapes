@@ -24,6 +24,15 @@ public class NumberShapesMainActivity extends AppCompatActivity {
 
         String text = editText.getText().toString();
 
+        if(text.isEmpty() || text.equals("")) {
+            Toast.makeText(context, "You need to enter a number!", duration).show();
+        } else {
+            evaluateNumber(text, context, duration);
+        }
+
+    }
+
+    private void evaluateNumber(String text, Context context, int duration){
         Number number = new Number(text);
 
         Log.i("The number is", number.getNumber().toString());
