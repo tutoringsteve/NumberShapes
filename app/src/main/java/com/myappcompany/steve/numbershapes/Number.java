@@ -33,14 +33,10 @@ class Number {
      * @return Returns true iff the number is a square number
      */
     public boolean isSquare() {
-        if(number==0){
-            return true;
-        }
-        ArrayList<Integer> squares = new ArrayList<>();
-        for(int root = 1; root*root <= number; root++) {
-            squares.add(root*root);
-        }
-        return squares.contains(number);
+
+        Double dblNumber = Double.parseDouble(number.toString());
+
+        return Math.sqrt(dblNumber) == Math.floor(Math.sqrt(dblNumber));
     }
 
     /**
@@ -51,13 +47,14 @@ class Number {
         if(number==0){
             return true;
         }
-        ArrayList<Integer> triangles = new ArrayList<>();
-        Integer sum = 0;
-        for(int i = 1; sum <= number; i++){
-            sum += i;
-            triangles.add(sum);
+
+        int x = 1;
+        int triangularNumber = 1;
+        while(triangularNumber < number) {
+            x++;
+            triangularNumber+=x;
         }
-        return triangles.contains(number);
+        return number == triangularNumber;
     }
 
     Integer getNumber() {
